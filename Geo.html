@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo Location</title>
+</head>
+<body>
+
+  <button type="button" onclick="pos()">Get Location</button>
+  <div id="location"></div>
+  
+  <script>
+    function pos()
+    {
+      navigator.geolocation.getCurrentPosition(p => {
+        document.getElementById('location').innerText = `lat: ${p.coords.latitude} long: ${p.coords.longitude}`;
+      },
+      (e) => {
+        document.getElementById('location').innerText = e.message;
+      }, 
+      {enableHighAccuracy: true, maximumAge: 10000});
+    }
+  </script>
+
+</body>
+</html>
